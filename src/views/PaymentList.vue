@@ -128,29 +128,11 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Plus, Search, Edit, Trash2, Eye } from 'lucide-vue-next'
+import Payment from '@/interfaces/Payment'
+import User from '@/interfaces/User'
 import store from '@/store'
 
 const router = useRouter()
-
-interface Payment {
-  id: string
-  userId: string
-  amount: number
-  status: 'pending' | 'completed' | 'failed'
-  category: string
-  date: string
-  createdOrUpdatedBy : string | undefined
-}
-
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-  createdAt?: string
-  lastLogin?: string
-}
 
 // Mock payments data
 const payments = computed<Payment[]>(()=>{

@@ -79,6 +79,8 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import { ref, computed, onMounted } from 'vue'
+import Payment from '@/interfaces/Payment'
+import User from '@/interfaces/User'
 import store from '@/store'
 
 const route = useRoute()
@@ -94,26 +96,6 @@ const user = computed(() => {
     (u: User) => u.id === payment.value?.userId
   )
 })
-
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-  createdAt?: string
-  lastLogin?: string
-}
-
-interface Payment {
-  id: string
-  userId: string
-  amount: number
-  status: 'pending' | 'completed' | 'failed'
-  category: string
-  date: string
-  createdOrUpdatedBy : string | undefined
-}
 
 onMounted(() => {
   const id = String(route.params.id)

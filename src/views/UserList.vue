@@ -134,16 +134,7 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Plus, Search, Edit, Trash2 } from 'lucide-vue-next'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  role: 'admin' | 'manager' | 'user'
-  status: 'active' | 'inactive'
-  createdAt: string
-  lastLogin?: string
-}
+import User from '@/interfaces/User'
 
 const searchTerm = ref('')
 const statusFilter = ref('all')

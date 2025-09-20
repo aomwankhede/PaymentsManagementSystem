@@ -1,31 +1,7 @@
 import { createStore } from 'vuex'
-
-// Types
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-  createdAt?: string
-  lastLogin?: string
-}
-
-interface Payment {
-  id: string
-  userId: string
-  amount: number
-  status: 'pending' | 'completed' | 'failed'
-  category: string
-  date: string
-  createdOrUpdatedBy : string | undefined
-}
-
-interface State {
-  userList: User[]
-  currUserDetails: User | null,
-  paymentList:Payment[]
-}
+import Payment from '@/interfaces/Payment'
+import User from '@/interfaces/User'
+import State from '@/interfaces/State'
 
 // Helpers for persistence
 function loadFromLocalStorage<T>(key: string, fallback: T): T {

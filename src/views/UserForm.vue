@@ -139,7 +139,7 @@ function valid(formObject:{id:string,name:string,email:string,role:string,status
       alert("Please enter a valid email")
       return false;
     }
-    if(store.getters.getUserList.filter(user => user.email == formObject.email).length > 0 && (isRegistrationForm.value || isEdit.value)){
+    if(store.getters.getUserList.filter(user => user.email == formObject.email).length > 0 && isRegistrationForm.value){
       alert("Email is alredy registered")
       return false;
     }
