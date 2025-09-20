@@ -165,7 +165,7 @@ function goBack() {
 
 function goToEdit() {
   if (payment.value) {
-    router.push({ name: 'PaymentForm', params: { id: payment.value.id } })
+    router.push(`/payments/new/${payment.value.id}`)
   }
 }
 </script>
