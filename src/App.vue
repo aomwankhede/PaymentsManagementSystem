@@ -1,14 +1,12 @@
 <template>
-  <nav>
-      <div>
-        <p class="text-blue-600 text-xl font-bold">
-          Hello Tailwind in Vue 3
-        </p>
-      </div>
-    <!-- <router-link to="/">Home</router-link> -->
-  </nav>
-  <!-- <router-view/> -->
+  <div class="min-h-screen flex flex-col">
+    <navbar-component/>
+    <main class="flex-1 bg-gray-50">
+      <router-view />
+    </main>
+  </div>
 </template>
 
-<style>
-</style>
+<script setup lang="ts">
+import NavbarComponent from './components/NavbarComponent.vue'
+</script>
