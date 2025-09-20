@@ -129,8 +129,28 @@ onMounted(() => {
   }
 })
 
+function valid(formObject:{id:string,name:string,email:string,role:string,status:string}){
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(formObject.name.length < 2 && (isRegistrationForm.value || isEdit.value)){
+        alert("Name length shoule be more than two")
+        return false;
+    }
+    if(!pattern.test(formObject.email)){
+      alert("Please enter a valid email")
+      return false;
+    }
+    if(store.getters.getUserList.filter(user => user.email == formObject.email).length > 0 && (isRegistrationForm.value || isEdit.value)){
+      alert("Email is alredy registered")
+      return false;
+    }
+    return true;
+}
+
 // Submit logic
 async function submitForm() {
+  if(!valid(form)){
+    return;
+  }
   if (isEdit.value) {
     // Update existing user
     await store.dispatch('editUser', { ...form })
