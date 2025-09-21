@@ -62,60 +62,6 @@ PMS/
 └── README.md
 ```
 
-# Vue Router Structure 
-```bash
-[
-  {
-    path: '/',
-    name : 'Dashboard',
-    component:HomeComponent
-  },
-  {
-    path: '/users',
-    name: 'UserList',
-    meta: { requiresAuth: true },
-    component: UserList,
-  },
-  {
-    path: '/users/new',
-    name: 'UserForm',
-    component: UserForm,
-  },
-  {
-    path: '/users/:id',
-    name: 'UserEdit',
-    meta: { requiresAuth: true },
-    component: UserForm,
-    props: true,
-  },
-  {
-    path: '/payments',
-    name: 'PaymentList',
-    meta: { requiresAuth: true },
-    component: PaymentList,
-  },
-  {
-    path: '/payments/new',
-    name: 'PaymentForm',
-    meta: { requiresAuth: true },
-    component: PaymentForm,
-  },
-  {
-    path: '/payments/new/:id',
-    name: 'PaymentEdit',
-    meta: { requiresAuth: true },
-    component: PaymentForm,
-  },
-  {
-    path: '/payments/:id',
-    name: 'PaymentDetail',
-    meta: { requiresAuth: true },
-    component: PaymentDetail,
-    props: true,
-  },
-]
-```
-
 # User flow
 ```
 1. Registration / Login
