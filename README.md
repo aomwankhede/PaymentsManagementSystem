@@ -1,5 +1,5 @@
 # PMS
-This is a vue.js application which aims to  manage payments for a small fintech company.
+This is a vue.js application to manage payments for a small fintech company.
 
 # Setup
 1. Clone the repository.
@@ -60,4 +60,104 @@ PMS/
 ├── tsconfig.json
 ├── vue.config.js
 └── README.md
+```
+
+# Vue Router Structure 
+```bash
+[
+  {
+    path: '/',
+    name : 'Dashboard',
+    component:HomeComponent
+  },
+  {
+    path: '/users',
+    name: 'UserList',
+    meta: { requiresAuth: true },
+    component: UserList,
+  },
+  {
+    path: '/users/new',
+    name: 'UserForm',
+    component: UserForm,
+  },
+  {
+    path: '/users/:id',
+    name: 'UserEdit',
+    meta: { requiresAuth: true },
+    component: UserForm,
+    props: true,
+  },
+  {
+    path: '/payments',
+    name: 'PaymentList',
+    meta: { requiresAuth: true },
+    component: PaymentList,
+  },
+  {
+    path: '/payments/new',
+    name: 'PaymentForm',
+    meta: { requiresAuth: true },
+    component: PaymentForm,
+  },
+  {
+    path: '/payments/new/:id',
+    name: 'PaymentEdit',
+    meta: { requiresAuth: true },
+    component: PaymentForm,
+  },
+  {
+    path: '/payments/:id',
+    name: 'PaymentDetail',
+    meta: { requiresAuth: true },
+    component: PaymentDetail,
+    props: true,
+  },
+]
+```
+
+# User flow
+```
+1. Registration / Login
+   - First user registers as Admin (required for setup).
+   - Subsequent users are created by Admin from the dashboard.
+   - Validation:
+       • Name: min 2 characters
+       • Email: must be valid
+       • Role: Admin / Financial Manager / User
+
+2. Authentication & Route Protection
+   - All routes (/users, /payments) require authentication.
+   - If not logged in → redirected to Login page.
+
+3. Roles & Permissions
+   - Admin: Full CRUD on Users + Payments.
+   - Financial Manager: View Users (no edit), Full CRUD on Payments.
+   - User: View-only access (Users + Payments).
+
+4. User Management
+   - Admin can view, filter, create, edit, and delete users.
+   - Filters: search by status and role.
+
+5. Payment Management
+   - Payment list view with search, status filter, category filter.
+   - Each payment:
+       • View → Detailed view of transaction.
+       • Edit → Prefilled form (Admin/Manager only).
+       • Delete → Remove payment (Admin/Manager only).
+   - Add Payment button → Admin & Financial Managers only.
+
+6. Payment Details Page
+   - Shows: Payment ID, User, Amount, Status, Category, Date, Audit Info.
+
+7. Persistence
+   - Data stored in localStorage (users, payments, current user).
+   - Vuex + TypeScript for strict state management.
+
+8. UI / Tech Stack
+   - Vue 3 + TypeScript
+   - Vuex (state management)
+   - Vue Router (auth guards)
+   - Tailwind CSS (responsive design)
+   - Jest + Vue Test Utils (unit testing)
 ```
