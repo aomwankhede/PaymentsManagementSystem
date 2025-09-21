@@ -1,5 +1,6 @@
 # PMS
 This is a vue.js application to manage payments for a small fintech company.
+[![Watch the video](https://img.shields.io/badge/Watch-Demo%20Video-red?logo=youtube)](https://drive.google.com/file/d/1vLeK7JtrLGqBEtnN66bOyk1sNYLHHjyF/view?usp=sharing)
 
 # Setup
 1. Clone the repository.
